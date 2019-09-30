@@ -15,7 +15,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    return True if first == second else False
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -23,7 +23,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return True if type(first) == type(second) else False
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -31,7 +31,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return True if first is second else False
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -48,7 +48,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    if not isinstance(first_value , int) or  not isinstance(second_value, int):
+    if not isinstance(first_value , int) or not isinstance(second_value, int):
         raise ValueError("params are not int")
     return first_value * second_value
 
@@ -82,14 +82,12 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     """
     try:
         int(first_value) and int(second_value)
-    except:
+    except TypeError:
         raise ValueError("params are not int")
     return int(first_value) * int(second_value)
 
-    #if not isinstance(first_value , int) or  not isinstance(second_value, int):
+    #if not isinstance(first_value , int) or not isinstance(second_value, int):
     #    raise ValueError("params are not int")
-
-
 def is_word_in_text(word: str, text: str) -> bool:
     """
     If text contain word return True
@@ -114,13 +112,9 @@ def some_loop_exercise() -> list:
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
     
-    res = [];
-    for a in range(0,13):
-        if a == 6 or a == 7:
-            continue
-        res += [a]
-    return res
-    
+    data = range(0,13)
+    return [data for data in data if not (data == 6 or data == 7)]
+
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
@@ -131,11 +125,8 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    res = data[:]
-    for a in data:
-        if a < 0:
-            res.remove(a)
-    return res
+    return [data for data in data if data >= 0]
+
 
 
 def alphabet() -> dict:
@@ -146,8 +137,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    letter = list('abcdefghijklmnopqrstuvwxyz')
-    return { i+1 : letter[i] for i in range(len(letter))}
+    return { i + 1 : chr(i + ord('a')) for i in range(0,26)}
 
 def simple_sort(data: List[int]) -> List[list]:
     """
@@ -158,9 +148,9 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    for i in range(0,len(data)-1):
+    for i in range(0,len(data) - 1):
         a = i
-        while (data[a] > data[a+1]) and a >= 0:
-            data[a], data[a+1] = data[a+1], data[a]
-            a-=1
+        while (data[a] > data[a + 1]) and a >= 0:
+            data[a], data[a + 1] = data[a + 1], data[a]
+            a -= 1
     return data
