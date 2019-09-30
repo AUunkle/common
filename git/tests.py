@@ -168,9 +168,7 @@ class TestAlphabet(unittest.TestCase):
                     21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
         self.assertDictEqual(alphabet(), expected)
 
-
-
 if __name__ == "__main__":
     unittest.main()
-	
+
 print("Done")
