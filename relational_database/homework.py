@@ -126,7 +126,7 @@ def task_7_list_supplier_countries_in_desc_order(cur) -> list:
 
 
 
-def task_8_count_customers_by_city(cur) -> list:
+def task_8_count_customers_by_city(cur):
     """
     List the number of customers in each city
 
